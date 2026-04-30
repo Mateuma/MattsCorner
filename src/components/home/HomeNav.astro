@@ -70,6 +70,7 @@ const navData: NavItem[] = [
 </nav>
 
 <style lang="scss">
+    @use "../../styles/variables.scss" as *;
     .HomeNav {
         margin: 0;
         padding: 0;
@@ -77,6 +78,8 @@ const navData: NavItem[] = [
         flex-wrap: wrap;
         gap: 1rem;
         align-items: flex-start;
+        background-color: var(--secondary);
+        border-radius: $base-spacing * 4;
 
         &__Item {
             min-width: 10rem;
