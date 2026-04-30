@@ -21,6 +21,8 @@ const { title, open = false } = Astro.props;
 </details>
 
 <style lang="scss">
+    @use "../../styles/mixins.scss" as Mixins;
+
     .Accordeon {
         overflow: clip;
         transition:
@@ -28,24 +30,27 @@ const { title, open = false } = Astro.props;
             box-shadow 180ms ease;
 
         &__Summary {
-            border: 1px solid var(--gray-light, #d6d6d6);
+            padding: 0.25rem 1rem;
+            margin-bottom: 0.25rem;
+            border: 1px solid white;
             border-radius: 0.5rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+            background-image: url(/public/backgrounds/StripePanelsPink.jpg);
+            background-size: 100%;
             display: flex;
             align-items: center;
+            font-size: 1.125rem;
             justify-content: space-between;
             gap: 1rem;
             cursor: pointer;
-            padding: 0.875rem 1rem;
+            color: white;
             font-weight: 600;
             list-style: none;
+            @include Mixins.TextStroke(var(--accent-pink), 3px);
 
             &::-webkit-details-marker {
                 display: none;
             }
-        }
-
-        &__Title {
-            line-height: 1.25;
         }
 
         &__Icon {

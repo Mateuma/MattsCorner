@@ -1,0 +1,9 @@
+@mixin TextStroke($Color: #000, $Width: 1px) {
+    -webkit-text-stroke: $Width $Color;
+    paint-order: stroke fill;
+    text-shadow:
+        -#{$Width} 0 $Color,
+        0 #{$Width} $Color,
+        #{$Width} 0 $Color,
+        0 -#{$Width} $Color;
+}
