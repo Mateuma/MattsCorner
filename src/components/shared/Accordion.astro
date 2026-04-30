@@ -7,67 +7,72 @@ interface Props {
 const { title, open = false } = Astro.props;
 ---
 
-<details class="Accordion" open={open}>
-    <summary class="AccordionSummary">
-        <span class="AccordionTitle">{title}</span>
-        <span class="AccordionIcon" aria-hidden="true">+</span>
+<details class="Accordeon" open={open}>
+    <summary class="Accordeon__Summary">
+        <span class="Accordeon__Title">{title}</span>
+        <span class="Accordeon__Icon" aria-hidden="true">+</span>
     </summary>
 
-    <div class="AccordionBody">
+    <div class="Accordeon__Body">
         <slot name="Body">
             <slot />
         </slot>
     </div>
 </details>
 
-<style>
-    .Accordion {
-        border: 1px solid var(--gray-light, #d6d6d6);
-        border-radius: 0.5rem;
+<style lang="scss">
+    .Accordeon {
         overflow: clip;
-    }
+        transition:
+            border-color 180ms ease,
+            box-shadow 180ms ease;
 
-    .AccordionSummary {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        cursor: pointer;
-        padding: 0.875rem 1rem;
-        font-weight: 600;
-        list-style: none;
-    }
+        &__Summary {
+            border: 1px solid var(--gray-light, #d6d6d6);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            padding: 0.875rem 1rem;
+            font-weight: 600;
+            list-style: none;
 
-    .AccordionSummary::-webkit-details-marker {
-        display: none;
-    }
+            &::-webkit-details-marker {
+                display: none;
+            }
+        }
 
-    .AccordionTitle {
-        line-height: 1.25;
-    }
+        &__Title {
+            line-height: 1.25;
+        }
 
-    .AccordionIcon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.25rem;
-        height: 1.25rem;
-        font-size: 1.125rem;
-        line-height: 1;
-        transition: transform 180ms ease;
-        transform-origin: center;
-    }
+        &__Icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1.125rem;
+            line-height: 1;
+            transition: transform 180ms ease;
+            transform-origin: center;
+        }
 
-    .AccordionBody {
-        padding: 0 1rem 1rem;
-        background: transparent;
-    }
+        &__Body {
+            padding: 0 1rem 1rem;
+            background: transparent;
 
-    .AccordionBody :global(*) {
-        background: transparent;
-    }
+            :global(*) {
+                background: transparent;
+            }
+        }
 
-    .Accordion[open] .AccordionIcon {
-        transform: rotate(45deg);
+        &[open] {
+            .Accordeon__Icon {
+                transform: rotate(45deg);
+            }
+        }
     }
 </style>
