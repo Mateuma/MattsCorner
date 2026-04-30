@@ -22,3 +22,14 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# agent rules
+.rules
+.cursorrules
+.windsurfrules
+.clinerules
+AGENT.md
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.github/copilot-instructions.md
