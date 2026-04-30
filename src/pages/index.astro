@@ -9,7 +9,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
-    <body>
+    <body class="Body">
         <main class="MainContainer">
             <header class="Header">header</header>
             <HomeNav />
@@ -23,6 +23,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 </html>
 
 <style>
+    .Body {
+        background-image: url("../../public/backgrounds/FloweryWallpaper.png");
+        background-size: 800px;
+        background-repeat: repeat;
+    }
+
     .MainContainer {
         display: grid;
         grid-template-columns: 200px 1fr 200px;
