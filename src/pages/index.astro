@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/core/BaseHead.astro";
+import HomeNav from "../components/home/HomeNav.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
@@ -11,9 +12,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     <body>
         <main class="MainContainer">
             <header class="Header">header</header>
-            <nav>navvie</nav>
-            <section class="MainContent">main</section>
-            <section class="SideContent">side</section>
+            <HomeNav />
+            <section class="MainContent">main + Update log</section>
+            <section class="SideContent">
+                About me + Contact Me + featured page + meme calendar
+            </section>
         </main>
         <footer>footer</footer>
     </body>

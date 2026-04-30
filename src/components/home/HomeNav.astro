@@ -1,0 +1,118 @@
+---
+import Accordion from "../shared/Accordion.astro";
+
+type NavChildItem = {
+    label: string;
+    link: string;
+};
+
+type NavItem = {
+    label: string;
+    children: NavChildItem[];
+};
+
+const navData: NavItem[] = [
+    {
+        label: "Site",
+        children: [
+            { label: "Home.", link: "/" },
+            {
+                label: "Shoutouts!",
+                link: "/credits",
+            },
+            {
+                label: "Projects.",
+                link: "/projects",
+            },
+            {
+                label: "Interests.",
+                link: "/interests",
+            },
+        ],
+    },
+    {
+        label: "Blogs",
+        children: [
+            { label: "Tech", link: "/blogs/tech" },
+            { label: "Personal", link: "/blogs/personal" },
+        ],
+    },
+    {
+        label: "The Outside",
+        children: [{ label: "", link: "" }],
+    },
+];
+---
+
+<nav aria-label="Main navigation">
+    <div class="HomeNav">
+        {
+            navData.map((item) => (
+                <div class="HomeNav__Item">
+                    <Accordion title={item.label} open>
+                        <ul class="HomeNav__Submenu" slot="Body">
+                            {item.children.map((child) => (
+                                <li class="HomeNav__SubmenuItem">
+                                    <a
+                                        href={child.link}
+                                        class="HomeNav__Sublink"
+                                    >
+                                        {child.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </Accordion>
+                </div>
+            ))
+        }
+    </div>
+</nav>
+
+<style>
+    .HomeNav {
+        margin: 0;
+        padding: 0;
+    }
+
+    .HomeNav__Submenu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .HomeNav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .HomeNav__Item {
+        min-width: 10rem;
+    }
+
+    .HomeNav__Link,
+    .HomeNav__Sublink {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .HomeNav__Link {
+        display: inline-block;
+        padding: 0.875rem 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.5rem;
+    }
+
+    .HomeNav__Link:hover,
+    .HomeNav__Link:focus-visible,
+    .HomeNav__Sublink:hover,
+    .HomeNav__Sublink:focus-visible {
+        text-decoration: underline;
+    }
+
+    .HomeNav__SubmenuItem + .HomeNav__SubmenuItem {
+        margin-top: 0.25rem;
+    }
+</style>
