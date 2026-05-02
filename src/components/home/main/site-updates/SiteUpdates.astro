@@ -62,8 +62,7 @@ const updates = rawUpdates.sort(
         }
 
         &__Divider {
-            border-top: 1px dashed var(--accent-green);
-            margin: calc($base-spacing / 2) 0;
+            @include divider();
         }
     }
 </style>
