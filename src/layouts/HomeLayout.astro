@@ -1,0 +1,45 @@
+---
+import BaseHead from "../components/core/BaseHead.astro";
+import HomeNav from "../components/home/HomeNav.astro";
+export interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+    <body class="Body">
+        <main class="MainContainer">
+            <header class="Header">
+                <h1>Matt's Corner</h1>
+            </header>
+            <HomeNav />
+            <slot />
+        </main>
+        <footer>footer</footer>
+    </body>
+</html>
+
+<style>
+    .Body {
+        background-image: url("../../public/backgrounds/FloweryWallpaper.png");
+        background-size: 800px;
+        background-repeat: repeat;
+    }
+
+    .MainContainer {
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+        gap: 2rem;
+    }
+
+    .Header {
+        grid-column: span 3;
+    }
+</style>
