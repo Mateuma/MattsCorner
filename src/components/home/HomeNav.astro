@@ -71,6 +71,7 @@ const navData: NavItem[] = [
 
 <style lang="scss">
     @use "../../styles/variables.scss" as *;
+    @use "../../styles/mixins.scss" as *;
     .HomeNav {
         margin: 0;
         padding: 1rem;
@@ -78,8 +79,7 @@ const navData: NavItem[] = [
         flex-wrap: wrap;
         gap: 0.1rem;
         align-items: flex-start;
-        background-color: var(--secondary);
-        border-radius: $base-spacing * 4;
+        @include basePanel;
 
         &__Item {
             min-width: 10rem;
@@ -96,13 +96,6 @@ const navData: NavItem[] = [
             padding: 0.875rem 1rem;
             border: 1px solid transparent;
             border-radius: 0.5rem;
-        }
-
-        &__Link:hover,
-        &__Link:focus-visible,
-        &__Sublink:hover,
-        &__Sublink:focus-visible {
-            text-decoration: underline;
         }
 
         &__SubmenuItem + &__SubmenuItem {
