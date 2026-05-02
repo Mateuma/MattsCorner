@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/core/BaseHead.astro";
 import HomeNav from "../components/home/HomeNav.astro";
+import HomeMain from "../components/home/main/HomeMain.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
@@ -11,9 +12,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     </head>
     <body class="Body">
         <main class="MainContainer">
-            <header class="Header">header</header>
+            <header class="Header">
+                <h1>Matt's Corner</h1>
+            </header>
             <HomeNav />
-            <section class="MainContent">main + Update log</section>
+            <HomeMain />
             <section class="SideContent">
                 About me + Contact Me + featured page + meme calendar
             </section>
