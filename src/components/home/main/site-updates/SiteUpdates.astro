@@ -1,0 +1,69 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import SiteUpdate from "./SiteUpdate.astro";
+
+const rawUpdates = await getCollection("siteUpdates");
+const updates = rawUpdates.sort(
+    (a: CollectionEntry<"siteUpdates">, b: CollectionEntry<"siteUpdates">) =>
+        b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<section class="SiteUpdates">
+    <h2 class="SiteUpdates__Header">Site Updates</h2>
+    <div class="SiteUpdates__Content">
+        {
+            updates.length === 0 ? (
+                <p class="SiteUpdates__Empty">No updates yet.</p>
+            ) : (
+                <ul class="SiteUpdates__List">
+                    {updates.map((update, index) => (
+                        <>
+                            <SiteUpdate update={update} />
+                            {index < updates.length - 1 && (
+                                <hr class="SiteUpdates__Divider" />
+                            )}
+                        </>
+                    ))}
+                </ul>
+            )
+        }
+    </div>
+</section>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/mixins.scss" as *;
+    .SiteUpdates {
+        @include basePanel;
+        padding: 0;
+        min-width: 21em;
+
+        &__Header {
+            @include SectionHeader(var(--accent-green));
+        }
+
+        &__Content {
+            padding: $base-spacing;
+            max-height: 10em;
+            overflow-y: scroll;
+        }
+
+        &__Empty {
+            margin: $base-spacing * 4;
+        }
+
+        &__List {
+            padding-left: $base-spacing;
+            list-style: none;
+            margin: 0;
+            display: grid;
+            gap: $base-spacing;
+        }
+
+        &__Divider {
+            border-top: 1px dashed var(--accent-green);
+            margin: calc($base-spacing / 2) 0;
+        }
+    }
+</style>

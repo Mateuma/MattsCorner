@@ -22,6 +22,7 @@
     background-color: $accent;
     @include TextStroke($accent, $strokeWidth);
     padding-left: $base-spacing * 4;
+    margin-bottom: $base-spacing;
     border: 1px dotted white;
     border-top-left-radius: $base-spacing * 4;
     border-top-right-radius: $base-spacing * 4;

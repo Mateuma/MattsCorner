@@ -1,0 +1,24 @@
+---
+import FormattedDate from "../../../shared/FormattedDate.astro";
+import { type CollectionEntry } from "astro:content";
+
+const { update } = Astro.props as { update: CollectionEntry<"siteUpdates"> };
+---
+
+<li class="SiteUpdate">
+    <FormattedDate date={update.data.pubDate} />
+    <p class="SiteUpdate__Date">{update.data.title}</p>
+    {
+        update.data.description && (
+            <div class="SiteUpdate__Body">- {update.data.description}</div>
+        )
+    }
+</li>
+
+<style lang="scss">
+    .SiteUpdate {
+        &__Date {
+            margin: 0;
+        }
+    }
+</style>
