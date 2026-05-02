@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+
+const featuredPages = await getCollection("featuredPages");
+
+const featuredPage = featuredPages[0];
+---
+
+<section class="FeaturedPage">
+    <div class="FeaturedPage__Content">
+        {
+            featuredPage ? (
+                <>
+                    <a class="FeaturedPage__Link" href={featuredPage.data.href}>
+                        {featuredPage.data.title}
+                    </a>
+                    {featuredPage.data.description && (
+                        <p class="FeaturedPage__Description">
+                            - {featuredPage.data.description}
+                        </p>
+                    )}
+                </>
+            ) : (
+                <span class="FeaturedPage__Label">
+                    No featured pages configured.
+                </span>
+            )
+        }
+    </div>
+</section>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/mixins.scss" as *;
+    .FeaturedPage {
+        margin-bottom: $base-spacing;
+
+        &__Content {
+            gap: $base-spacing;
+        }
+
+        &__Label {
+            font-size: 0.875rem;
+            opacity: 0.85;
+        }
+
+        &__Link {
+            text-decoration: underline;
+        }
+
+        &__Description {
+            margin: 0;
+            opacity: 0.9;
+        }
+    }
+</style>

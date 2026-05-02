@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+const blogPosts = await getCollection("blog");
+
+const featurePool = [
+    { href: "/about", label: "About" },
+    { href: "/blog", label: "Blog" },
+    ...blogPosts.map((post) => ({
+        href: `/blog/${post.id}/`,
+        label: post.data.title,
+    })),
+];
+
+const randomPage = featurePool[Math.floor(Math.random() * featurePool.length)];
+---
+
+<div class="RandomPage">
+    <span class="RandomPage__Description">... or try a random page:</span>
+    <a class="RandomPage__Link" href={randomPage.href}>
+        {randomPage.label}
+    </a>
+</div>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+
+    .RandomPage {
+        display: flex;
+        flex-wrap: wrap;
+
+        &__Description {
+            margin-bottom: $base-spacing;
+            margin-right: $base-spacing;
+        }
+
+        &__Link {
+            text-decoration: underline;
+        }
+    }
+</style>

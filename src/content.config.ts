@@ -30,4 +30,19 @@ const siteUpdates = defineCollection({
     }),
 });
 
-export const collections = { blog, siteUpdates };
+const featuredPages = defineCollection({
+  // Curated links for Featured section cards and random picks.
+  loader: glob({
+    base: "./src/content/featured-pages",
+    pattern: "**/*.yml",
+  }),
+  schema: () =>
+    z.object({
+      href: z.string(),
+      title: z.string(),
+      description: z.string().optional(),
+      personal: z.boolean().optional(),
+    }),
+});
+
+export const collections = { blog, siteUpdates, featuredPages };

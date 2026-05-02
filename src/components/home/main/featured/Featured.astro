@@ -1,0 +1,31 @@
+---
+import FeaturedPage from "./FeaturedPage.astro";
+import RandomPage from "./RandomPage.astro";
+---
+
+<section class="Featured">
+    <h2 class="Featured__Header">Featured Now</h2>
+    <div class="Featured__Content">
+        <FeaturedPage />
+        <RandomPage />
+    </div>
+</section>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/mixins.scss" as *;
+    .Featured {
+        @include basePanel;
+        padding: 0;
+        min-width: 21em;
+
+        &__Header {
+            @include SectionHeader(var(--accent-purple));
+            margin-bottom: 0;
+        }
+
+        &__Content {
+            padding: $base-spacing * 2;
+        }
+    }
+</style>
