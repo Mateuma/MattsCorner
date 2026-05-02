@@ -1,14 +1,19 @@
 ---
+import SiteUpdates from "./SiteUpdates.astro";
 import Welcome from "./Welcome.astro";
 ---
 
 <div class="HomeMain">
     <Welcome />
+    <SiteUpdates />
 </div>
 
 <style lang="scss">
     @use "/src/styles/variables.scss" as *;
     @use "/src/styles/mixins.scss" as *;
     .HomeMain {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
     }
 </style>

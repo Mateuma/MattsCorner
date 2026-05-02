@@ -14,3 +14,17 @@
     background-color: var(--secondary);
     border-radius: $base-spacing * 4;
 }
+
+@mixin SectionHeader($accent: var(--accent-pink), $strokeWidth: 3px) {
+    font-size: 1.25em;
+    font-weight: $font-weight-normal;
+    color: white;
+    background-color: $accent;
+    @include TextStroke($accent, $strokeWidth);
+    padding-left: $base-spacing * 4;
+    border: 1px dotted white;
+    border-top-left-radius: $base-spacing * 4;
+    border-top-right-radius: $base-spacing * 4;
+    border-left: none;
+    border-right: none;
+}

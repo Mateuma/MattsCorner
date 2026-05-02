@@ -1,0 +1,21 @@
+---
+
+---
+
+<section class="SiteUpdates">
+    <h2 class="SiteUpdates__Header">Site Updates</h2>
+</section>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/mixins.scss" as *;
+    .SiteUpdates {
+        @include basePanel;
+        padding: 0;
+        min-width: 21em;
+
+        &__Header {
+            @include SectionHeader(var(--accent-green));
+        }
+    }
+</style>
