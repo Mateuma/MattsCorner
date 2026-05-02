@@ -1,0 +1,46 @@
+---
+const {
+    translation,
+    translationLang = "en",
+    translationAriaHidden = true,
+} = Astro.props;
+---
+
+<div class="TranslatedSubscript">
+    <slot />
+    {
+        translation && (
+            <span
+                class="TranslatedSubscript__Translation"
+                lang={translationLang}
+                aria-hidden="true"
+            >
+                {translation}
+            </span>
+        )
+    }
+</div>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+
+    .TranslatedSubscript {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0;
+        margin-bottom: $base-spacing * 2;
+
+        &__Translation {
+            margin: 0;
+            font-size: 0.8em;
+            font-weight: $font-weight-normal;
+            white-space: nowrap;
+            text-align: right;
+        }
+    }
+
+    :global(.TranslatedSubscript > *:first-child) {
+        margin: 0;
+    }
+</style>

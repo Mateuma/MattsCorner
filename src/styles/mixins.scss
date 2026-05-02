@@ -31,13 +31,13 @@
 }
 
 @mixin divider(
-    $accent: var(--accent-green),
-    $width: 1px,
+    $color: var(--accent-green),
+    $thickness: 1px,
     $style: dashed,
     $vertical: $base-spacing / 2
 ) {
     border: 0;
-    border-top: $width $style $accent;
+    border-top: $thickness $style $color;
     margin: $vertical 0;
     width: 100%;
 }

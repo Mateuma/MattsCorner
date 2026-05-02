@@ -1,9 +1,14 @@
 ---
-
+import TranslatedSubscript from "../../shared/TranslatedSubscript.astro";
 ---
 
 <section class="Welcome">
-    <h2>おかえりなさい!</h2>
+    <TranslatedSubscript translation="Welcome!" translationLang="en">
+        <h2 lang="ja" aria-label="おかえりなさい! — Welcome!">
+            <span class="TranslatedSubscript__Text">おかえりなさい!</span>
+        </h2>
+    </TranslatedSubscript>
+
     <p>Thanks for stopping by. <br />Would you like some tea?</p>
     <p>
         I really wanted to create my own space in the internet, <br /> inspired by
