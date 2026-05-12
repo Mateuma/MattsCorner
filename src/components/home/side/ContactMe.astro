@@ -1,0 +1,83 @@
+---
+const contactList = [
+    {
+        label: "Email",
+        value: "gmail.com",
+        link: "mailto:mateusz323software@gmail.com",
+    },
+    {
+        label: "Github",
+        value: "Mateuma",
+        link: "https://github.com/Mateuma",
+    },
+    {
+        label: "Discord",
+        value: "hawwu",
+        link: "https://discord.com/users/264515272029896704",
+    },
+];
+---
+
+<section class="ContactMe">
+    <ul class="ContactMe__List">
+        {
+            contactList.map((contact) => (
+                <>
+                    <li class="ContactMe__ListItem">
+                        <div class="ContactMe__Contact">
+                            <span class="ContactMe__ContactLabel">
+                                {contact.label}:
+                            </span>
+                            <a
+                                href={contact.link}
+                                class="ContactMe__ContactValue"
+                            >
+                                {contact.value}
+                            </a>
+                        </div>
+                    </li>
+                </>
+            ))
+        }
+    </ul>
+</section>
+
+<style lang="scss">
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/mixins.scss" as *;
+    .ContactMe {
+        @include basePanel;
+        padding: $base-spacing * 4;
+
+        &__List {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+
+            &Item {
+                margin-left: $base-spacing * 4;
+                &::marker {
+                    content: "✿";
+                    color: var(--accent-purple);
+                }
+            }
+        }
+
+        &__Contact {
+            display: grid;
+            grid-template-columns: 1fr auto;
+
+            &Label {
+                margin-left: $base-spacing;
+                font-weight: bold;
+                color: var(--accent-purple);
+            }
+
+            &Value {
+                font-size: 1em;
+                color: var(--accent-green-dark);
+            }
+        }
+    }
+</style>
